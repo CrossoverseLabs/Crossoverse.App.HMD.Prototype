@@ -1,5 +1,22 @@
 # Crossoverse.HMDApp.Quest
-Assets/Oculus/
+Assets/*
+
+!Assets/Crossoverse.HMDApp.Quest/
+!Assets/Crossoverse.HMDApp.Quest.meta
+!Assets/Crossoverse.HMDApp.Quest.Contents/
+!Assets/Crossoverse.HMDApp.Quest.Contents.meta
+!Assets/Resources/
+!Assets/Resources.meta
+!Assets/URPSettings/
+!Assets/URPSettings.meta
+!Assets/XR/
+!Assets/XR.meta
+
+!Assets/Oculus/
+Assets/Oculus/*
+
+!Assets/Oculus/OculusProjectConfig.asset
+!Assets/Oculus/OculusProjectConfig.asset.meta
 
 # This .gitignore file should be placed at the root of your Unity project directory
 #

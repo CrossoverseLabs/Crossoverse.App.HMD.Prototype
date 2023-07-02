@@ -1,0 +1,3 @@
+[submodule "Crossoverse.Core"]
+	path = Crossoverse.Core
+	url = https://github.com/CrossoverseLabs/Crossoverse.Core.git

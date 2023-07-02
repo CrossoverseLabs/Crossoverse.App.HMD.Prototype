@@ -18,6 +18,13 @@ Assets/Oculus/*
 !Assets/Oculus/OculusProjectConfig.asset
 !Assets/Oculus/OculusProjectConfig.asset.meta
 
+!Assets/StreamingAssets/
+!Assets/StreamingAssets.meta
+Assets/StreamingAssets/*
+
+!Assets/StreamingAssets/VRM/
+!Assets/StreamingAssets/VRM.meta
+
 # This .gitignore file should be placed at the root of your Unity project directory
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore

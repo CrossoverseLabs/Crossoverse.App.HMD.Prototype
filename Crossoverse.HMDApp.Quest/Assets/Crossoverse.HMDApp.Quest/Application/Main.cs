@@ -1,6 +1,7 @@
 using System.IO;
 using Crossoverse.Core.Domain.ResourceProvider;
 using Crossoverse.HMDApp.Quest.Context;
+using Crossoverse.HMDApp.Quest.Lifecycle;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -20,6 +21,7 @@ namespace Crossoverse.HMDApp.Quest
         {
             await SceneManager.LoadSceneAsync("CameraSystem_Quest", LoadSceneMode.Additive);
             await SceneManager.LoadSceneAsync("ContentStage_Quest", LoadSceneMode.Additive);
+            await SceneManager.LoadSceneAsync("MotionCaptureSystem_Quest", LoadSceneMode.Additive);
 
             Initialize();
 
@@ -32,6 +34,7 @@ namespace Crossoverse.HMDApp.Quest
             _binaryDataProvider = new LocalFileBinaryDataProvider();
             _avatarResourceProvider = new UrpVrmProvider(_binaryDataProvider);
             _avatarContext = new AvatarContext(_avatarResourceProvider, _animatorController);
+            ServiceLocator.Instance.TryRegister(_avatarContext);
         }
     }
 }

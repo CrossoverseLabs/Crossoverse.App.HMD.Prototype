@@ -18,6 +18,12 @@ Assets/Oculus/*
 !Assets/Oculus/OculusProjectConfig.asset
 !Assets/Oculus/OculusProjectConfig.asset.meta
 
+!Assets/Plugins/
+!Assets/Plugins.meta
+Assets/Plugins/*
+!Assets/Plugins/Android/
+!Assets/Plugins/Android.meta
+
 !Assets/StreamingAssets/
 !Assets/StreamingAssets.meta
 Assets/StreamingAssets/*

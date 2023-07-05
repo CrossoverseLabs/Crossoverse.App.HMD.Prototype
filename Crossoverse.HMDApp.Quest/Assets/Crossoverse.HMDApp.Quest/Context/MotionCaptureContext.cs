@@ -1,4 +1,4 @@
-using Crossoverse.HMDApp.Quest.Domain.FaceTracking;
+using Crossoverse.Core.Domain.MotionCapture.FaceTracking;
 
 namespace Crossoverse.HMDApp.Quest.Context
 {

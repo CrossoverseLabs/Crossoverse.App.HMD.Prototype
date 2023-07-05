@@ -1,8 +1,8 @@
 using System;
 using System.Threading.Tasks;
+using Crossoverse.Core.Behaviour.MotionCapture.FaceTracking;
+using Crossoverse.Core.Domain.MotionCapture.FaceTracking;
 using Crossoverse.Core.Domain.ResourceProvider;
-using Crossoverse.HMDApp.Quest.Behaviour.FaceTracking;
-using Crossoverse.HMDApp.Quest.Domain.FaceTracking;
 using UnityEngine;
 
 namespace Crossoverse.HMDApp.Quest.Context

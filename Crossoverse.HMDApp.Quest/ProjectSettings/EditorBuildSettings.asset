@@ -9,13 +9,13 @@ EditorBuildSettings:
     path: Assets/Crossoverse.HMDApp.Quest.Contents/Scenes/Main.unity
     guid: 738b9381e9d0a5d4084d4758eb111b07
   - enabled: 1
-    path: Assets/Crossoverse.HMDApp.Quest.Contents/Scenes/CameraSystem_Quest.unity
-    guid: 5f7708a82fde4194d9f2f3587188fa9c
+    path: Assets/Crossoverse.HMDApp.Quest.Contents/Scenes/OVRSystem.unity
+    guid: 43d1161772169f745a1e4b39c0ee02dd
   - enabled: 1
     path: Assets/Crossoverse.HMDApp.Quest.Contents/Scenes/ContentStage_Quest.unity
     guid: 3968e3f4bb0f1f34da57df2b8372d3a1
   - enabled: 1
-    path: Assets/Crossoverse.HMDApp.Quest.Contents/Scenes/MotionCaptureSystem_Quest.unity
+    path: Assets/Crossoverse.HMDApp.Quest.Contents/Scenes/MotionCaptureSystem.unity
     guid: e2eeba4406b0d9947bf540837580bcaf
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: b0781699c65cc0148ab1e73c1f9a3385,

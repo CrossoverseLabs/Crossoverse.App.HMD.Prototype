@@ -1,3 +1,4 @@
+using Crossoverse.Core.Domain.MotionCapture.EyeTracking;
 using Crossoverse.Core.Domain.MotionCapture.FaceTracking;
 
 namespace Crossoverse.HMDApp.Quest.Context
@@ -6,17 +7,21 @@ namespace Crossoverse.HMDApp.Quest.Context
     {
         private readonly AvatarContext _avatarContext;
         private readonly IFaceTrackingSystem _faceTrackingSystem;
+        private readonly IEyeTrackingSystem _eyeTrackingSystem;
 
         private FaceTrackingData _faceTrackingData = new();
+        private EyeTrackingData _eyeTrackingData = new();
 
         public MotionCaptureContext
         (
+            AvatarContext avatarContext,
             IFaceTrackingSystem faceTrackingSystem,
-            AvatarContext avatarContext
+            IEyeTrackingSystem eyeTrackingSystem
         )
         {
-            _faceTrackingSystem = faceTrackingSystem;
             _avatarContext = avatarContext;
+            _faceTrackingSystem = faceTrackingSystem;
+            _eyeTrackingSystem = eyeTrackingSystem;
         }
 
         public void Tick()
@@ -24,6 +29,11 @@ namespace Crossoverse.HMDApp.Quest.Context
             if (_faceTrackingSystem.TryDequeue(ref _faceTrackingData))
             {
                 _avatarContext.UpdateFacialPose(_faceTrackingData);
+            }
+
+            if (_eyeTrackingSystem.TryPeek(ref _eyeTrackingData))
+            {
+                _avatarContext.UpdateEyePose(_eyeTrackingData);
             }
         }
     }

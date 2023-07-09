@@ -17,24 +17,28 @@ namespace Crossoverse.HMDApp.Quest
 
         private AvatarContext _avatarContext;
 
-        async void Start()
-        {
-            await SceneManager.LoadSceneAsync("CameraSystem_Quest", LoadSceneMode.Additive);
-            await SceneManager.LoadSceneAsync("ContentStage_Quest", LoadSceneMode.Additive);
-            await SceneManager.LoadSceneAsync("MotionCaptureSystem_Quest", LoadSceneMode.Additive);
-
-            Initialize();
-
-            var filePath = Path.Combine(Application.streamingAssetsPath, "VRM", "VRoid_Male_PerfectSync.vrm");
-            await _avatarContext.LoadAvatarResourceAsync(filePath);
-        }
-
-        private void Initialize()
+        void Awake()
         {
             _binaryDataProvider = new LocalFileBinaryDataProvider();
             _avatarResourceProvider = new UrpVrmProvider(_binaryDataProvider);
             _avatarContext = new AvatarContext(_avatarResourceProvider, _animatorController);
-            ServiceLocator.Instance.TryRegister(_avatarContext);
+
+            if (!ServiceLocator.Instance.TryRegister(_avatarContext))
+            {
+                Debug.LogError($"[{nameof(Main)}] Failed to register AvatarContext");
+            }
+
+            Debug.Log($"[{nameof(Main)}] Initialized");
+        }
+
+        async void Start()
+        {
+            await SceneManager.LoadSceneAsync("OVRSystem", LoadSceneMode.Additive);
+            await SceneManager.LoadSceneAsync("ContentStage_Quest", LoadSceneMode.Additive);
+            await SceneManager.LoadSceneAsync("MotionCaptureSystem", LoadSceneMode.Additive);
+
+            var filePath = Path.Combine(Application.streamingAssetsPath, "VRM", "VRoid_Male_PerfectSync.vrm");
+            await _avatarContext.LoadAvatarResourceAsync(filePath);
         }
     }
 }

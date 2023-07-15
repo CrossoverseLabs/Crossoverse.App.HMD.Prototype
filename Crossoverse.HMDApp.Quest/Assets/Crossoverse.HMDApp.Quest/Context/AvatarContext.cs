@@ -2,8 +2,10 @@ using System;
 using System.Threading.Tasks;
 using Crossoverse.Core.Behaviour.MotionCapture.EyeTracking;
 using Crossoverse.Core.Behaviour.MotionCapture.FaceTracking;
+using Crossoverse.Core.Behaviour.MotionCapture.HandTracking;
 using Crossoverse.Core.Domain.MotionCapture.EyeTracking;
 using Crossoverse.Core.Domain.MotionCapture.FaceTracking;
+using Crossoverse.Core.Domain.MotionCapture.HandTracking;
 using Crossoverse.Core.Domain.ResourceProvider;
 using UnityEngine;
 
@@ -18,6 +20,7 @@ namespace Crossoverse.HMDApp.Quest.Context
 
         private FaceTrackingTarget _faceTrackingTarget;
         private EyeTrackingTarget _eyeTrackingTarget;
+        private HandTrackingTarget _handTrackingTarget;
 
         public AvatarContext
         (
@@ -44,6 +47,9 @@ namespace Crossoverse.HMDApp.Quest.Context
             _eyeTrackingTarget = avatarAnimator.gameObject.AddComponent<EyeTrackingTarget>();
             _eyeTrackingTarget.Initialize();
 
+            _handTrackingTarget = avatarAnimator.gameObject.AddComponent<HandTrackingTarget>();
+            _handTrackingTarget.Initialize();
+
             OnLoaded?.Invoke();
         }
 
@@ -55,6 +61,11 @@ namespace Crossoverse.HMDApp.Quest.Context
         public void UpdateEyePose(in EyeTrackingData data)
         {
             _eyeTrackingTarget?.SetRotation(data);
+        }
+
+        public void UpdateHandPose(in HandTrackingData data)
+        {
+            _handTrackingTarget?.UpdateLocalRotation(data);
         }
     }
 }

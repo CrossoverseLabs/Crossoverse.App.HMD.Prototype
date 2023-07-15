@@ -1,5 +1,6 @@
 using Crossoverse.Core.Domain.MotionCapture.FaceTracking;
 using Crossoverse.Core.Domain.MotionCapture.EyeTracking;
+using Crossoverse.Core.Domain.MotionCapture.HandTracking;
 using Crossoverse.HMDApp.Quest.Context;
 using UnityEngine;
 using UnityPlayerLooper;
@@ -12,6 +13,7 @@ namespace Crossoverse.HMDApp.Quest.Lifecycle
         private AvatarContext _avatarContext;
         private IFaceTrackingSystem _faceTrackingSystem;
         private IEyeTrackingSystem _eyeTrackingSystem;
+        private IHandTrackingSystem _handTrackingSystem;
 
         void Awake()
         {
@@ -34,10 +36,14 @@ namespace Crossoverse.HMDApp.Quest.Lifecycle
             {
                 Debug.LogError($"[{nameof(MotionCaptureSystemLifecycle)}] IEyeTrackingSystem not found");
             }
-
-            if (_avatarContext != null && _faceTrackingSystem != null && _eyeTrackingSystem != null)
+            if (!ServiceLocator.Instance.TryGetService<IHandTrackingSystem>(out _handTrackingSystem))
             {
-                _motionCaptureContext = new(_avatarContext, _faceTrackingSystem, _eyeTrackingSystem);
+                Debug.LogError($"[{nameof(MotionCaptureSystemLifecycle)}] IHandTrackingSystem not found");
+            }
+
+            if (_avatarContext != null && _faceTrackingSystem != null && _eyeTrackingSystem != null && _handTrackingSystem != null)
+            {
+                _motionCaptureContext = new(_avatarContext, _faceTrackingSystem, _eyeTrackingSystem, _handTrackingSystem);
             };
         }
 
@@ -45,6 +51,7 @@ namespace Crossoverse.HMDApp.Quest.Lifecycle
         {
             _faceTrackingSystem.Tick();
             _eyeTrackingSystem.Tick();
+            _handTrackingSystem.Tick();
             _motionCaptureContext.Tick();
         }
     }
